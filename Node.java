@@ -13,12 +13,12 @@ public class Node {
       Construct an instance
      */
     public Node( Object cargoReference) {
-	this.cargoReference = cargoReference;
+	     this.cargoReference = cargoReference;
     }
     
     public Node( Object cargoReference, Node referenceToNextNode) {
-	this.cargoReference = cargoReference;
-	this.referenceToNextNode = referenceToNextNode;
+	     this.cargoReference = cargoReference;
+	     this.referenceToNextNode = referenceToNextNode;
     }
 
     /**
@@ -40,10 +40,14 @@ public class Node {
 
     // classic accessor and mutator
     public Node getReferenceToNextNode() {
-	return referenceToNextNode;
+	     return referenceToNextNode;
     }
 
     public void setReferenceToNextNode( Node referenceToNextNode) {
-	this.referenceToNextNode = referenceToNextNode;
+	     this.referenceToNextNode = referenceToNextNode;
+    }
+
+    public Object getCargoReference() {
+      return cargoReference;
     }
 }
