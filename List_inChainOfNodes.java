@@ -50,4 +50,13 @@ public class List_inChainOfNodes{
         headReference = newNode;
         return true;
      }
+
+     public Object get( int numOfNodesBefore){
+		int counter = 0;
+		for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
+		if (counter++ == numOfNodesBefore)
+		return test.getCargoReference();
+		}	    
+		return null;		
+	}
 }

@@ -25,5 +25,7 @@ public class UserOfList {
         }
         System.out.println( "populated list: " + list
                           + System.lineSeparator());
+
+	System.out.println( "get list element of index 2: " + list.get( 2));
     }
 }
