@@ -52,45 +52,44 @@ public class List_inChainOfNodes{
      }
 
      public boolean add (int numOfNodesBefore, Object val) {
-       int counter = 0;
-       Node newNode = new Node( val);
-       Node temp = null;
-        for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
-          if (counter++ == numOfNodesBefore)
-              temp = test.getReferenceToNextNode();
-              test.setReferenceToNextNode( newNode);
-              newNode.setReferenceToNextNode( temp);
-        }
-        return true;
-     }
+		if ( numOfNodesBefore == 0) 
+			return addAsHead( val);
+      	else { 
+		Node newNode = new Node( val);
+        Node target = getNode( numOfNodesBefore);
+	    Node temp = getNode( numOfNodesBefore - 1);
+        
+		temp.setReferenceToNextNode( newNode);
+        newNode.setReferenceToNextNode( target);
+		return true;
+		}
+	}
+
+	 public Node getNode( int numOfNodesBefore){
+      int counter = 0;
+		for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
+		        if (counter++ == numOfNodesBefore)
+					return test;
+		}
+		return null;
+	}
 
      public Object get( int numOfNodesBefore){
-      int counter = 0;
-		    for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
-		        if (counter++ == numOfNodesBefore)
-		            return test.getCargoReference();
-		    }	    
-		return null;
+      return getNode( numOfNodesBefore).getCargoReference();
   }
 
     public Object set( int numOfNodesBefore, Object newCargoReference){
-      int counter = 0;
-      Object saveForReturn = null;
-      for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
-            if (counter++ == numOfNodesBefore){
-              saveForReturn = test.getCargoReference();
-              test.setCargoReference( newCargoReference);
-              return saveForReturn;}
-        }  
-        return null;   
+      	Object saveForReturn = null;
+		Node target = getNode( numOfNodesBefore);
+        
+		saveForReturn = target.getCargoReference();
+        target.setCargoReference( newCargoReference);
+        return saveForReturn;
 	}
 
     public boolean remove( int numOfNodesBefore){
-      int counter = 0;
-      for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
-        if ( counter++ == numOfNodesBefore - 1)
-          test.setReferenceToNextNode( (test.getReferenceToNextNode()).getReferenceToNextNode());
-    }
-    return true;
+      Node target = getNode( numOfNodesBefore - 1);
+         target.setReferenceToNextNode( (target.getReferenceToNextNode()).getReferenceToNextNode());
+    	return true;
   }
 }
