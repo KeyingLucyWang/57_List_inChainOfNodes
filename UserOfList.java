@@ -25,7 +25,17 @@ public class UserOfList {
         }
         System.out.println( "populated list: " + list
                           + System.lineSeparator());
+//*ERROR*
+  // System.out.println( "added d at index 3: " + list.add( 3, "d") + ". "
+  //                     + "Now: " + list);
 
-	System.out.println( "get list element of index 2: " + list.get( 2));
+	System.out.println( "get list element of index 0: " + list.get( 0));
+  System.out.println( "get list element of index 2: " + list.get( 2));
+  System.out.println( "get list element of index 3: " + list.get( 3));
+
+  System.out.println( "modified element of index 2 from " + list.set( 2, "g") + " to g");
+
+  System.out.println( "remove list element of index 3: " + list.remove( 3) + ". "
+                      + "Now: " + list);
     }
 }

@@ -51,12 +51,46 @@ public class List_inChainOfNodes{
         return true;
      }
 
+     public boolean add (int numOfNodesBefore, Object val) {
+       int counter = 0;
+       Node newNode = new Node( val);
+       Node temp = null;
+        for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
+          if (counter++ == numOfNodesBefore)
+              temp = test.getReferenceToNextNode();
+              test.setReferenceToNextNode( newNode);
+              newNode.setReferenceToNextNode( temp);
+        }
+        return true;
+     }
+
      public Object get( int numOfNodesBefore){
-		int counter = 0;
-		for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
-		if (counter++ == numOfNodesBefore)
-		return test.getCargoReference();
-		}	    
-		return null;		
+      int counter = 0;
+		    for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
+		        if (counter++ == numOfNodesBefore)
+		            return test.getCargoReference();
+		    }	    
+		return null;
+  }
+
+    public Object set( int numOfNodesBefore, Object newCargoReference){
+      int counter = 0;
+      Object saveForReturn = null;
+      for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
+            if (counter++ == numOfNodesBefore){
+              saveForReturn = test.getCargoReference();
+              test.setCargoReference( newCargoReference);
+              return saveForReturn;}
+        }  
+        return null;   
 	}
+
+    public boolean remove( int numOfNodesBefore){
+      int counter = 0;
+      for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
+        if ( counter++ == numOfNodesBefore - 1)
+          test.setReferenceToNextNode( (test.getReferenceToNextNode()).getReferenceToNextNode());
+    }
+    return true;
+  }
 }
