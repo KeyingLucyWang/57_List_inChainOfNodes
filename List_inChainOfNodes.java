@@ -51,45 +51,51 @@ public class List_inChainOfNodes{
         return true;
      }
 
-     public boolean add (int numOfNodesBefore, Object val) {
-		if ( numOfNodesBefore == 0) 
-			return addAsHead( val);
-      	else { 
-		Node newNode = new Node( val);
-        Node target = getNode( numOfNodesBefore);
-	    Node temp = getNode( numOfNodesBefore - 1);
-        
-		temp.setReferenceToNextNode( newNode);
-        newNode.setReferenceToNextNode( target);
-		return true;
-		}
-	}
+    public boolean add (int numOfNodesBefore, Object val) {
+      if ( numOfNodesBefore == 0) 
+        return addAsHead( val);
+      else { 
+          Node newNode = new Node( val);
+          Node target = getNode( numOfNodesBefore);
+          Node temp = getNode( numOfNodesBefore - 1);
 
-	 public Node getNode( int numOfNodesBefore){
+          temp.setReferenceToNextNode( newNode);
+          newNode.setReferenceToNextNode( target);
+          return true;
+        }
+      }
+
+	  public Node getNode( int numOfNodesBefore){
       int counter = 0;
-		for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
-		        if (counter++ == numOfNodesBefore)
+      for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
+        if (counter++ == numOfNodesBefore)
 					return test;
-		}
-		return null;
-	}
+      }
+      return null;
+    }
 
-     public Object get( int numOfNodesBefore){
+    public Object get( int numOfNodesBefore){
       return getNode( numOfNodesBefore).getCargoReference();
-  }
+    }
 
     public Object set( int numOfNodesBefore, Object newCargoReference){
-      	Object saveForReturn = null;
-		Node target = getNode( numOfNodesBefore);
-        
-		saveForReturn = target.getCargoReference();
-        target.setCargoReference( newCargoReference);
-        return saveForReturn;
-	}
+      Object saveForReturn = null;
+      Node target = getNode( numOfNodesBefore);
+
+      saveForReturn = target.getCargoReference();
+      target.setCargoReference( newCargoReference);
+      return saveForReturn;
+    }
 
     public boolean remove( int numOfNodesBefore){
-      Node target = getNode( numOfNodesBefore - 1);
-         target.setReferenceToNextNode( (target.getReferenceToNextNode()).getReferenceToNextNode());
-    	return true;
+      if (numOfNodesBefore == 0) {
+        headReference = getNode( numOfNodesBefore + 1);
+        return true;
+      }
+      else {
+        Node target = getNode( numOfNodesBefore - 1);
+        target.setReferenceToNextNode( (target.getReferenceToNextNode()).getReferenceToNextNode());
+        return true;
+    }
   }
 }

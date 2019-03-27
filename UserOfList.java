@@ -25,7 +25,7 @@ public class UserOfList {
         }
         System.out.println( "populated list: " + list
                           + System.lineSeparator());
-//*ERROR*
+
    System.out.println( "added d at index 0: " + list.add( 0, "#") + ". "
                        + "Now: " + list);
    System.out.println( "added d at index 4: " + list.add( 4, "d") + ". "
@@ -36,11 +36,20 @@ public class UserOfList {
 
 	System.out.println( "get list element of index 0: " + list.get( 0));
   System.out.println( "get list element of index 2: " + list.get( 2));
-  System.out.println( "get list element of index 3: " + list.get( 3));
+  System.out.println( "get list element of index 3: " + list.get( 3)
+                    + System.lineSeparator());
 
-  System.out.println( "modified element of index 2 from " + list.set( 2, "g") + " to g");
+  System.out.println( "modified element of index 0 from " + list.set( 0, "*") + " to t");
+  System.out.println( "modified element of index 1 from " + list.set( 1, "t") + " to t");
+  System.out.println( "modified element of index 2 from " + list.set( 2, "a") + " to a"
+                    + System.lineSeparator());
 
+  System.out.println( "remove list element of index 0: " + list.remove( 0) + ". "
+                      + "Now: " + list);
+  System.out.println( "remove list element of index 2: " + list.remove( 2) + ". "
+                      + "Now: " + list);
   System.out.println( "remove list element of index 3: " + list.remove( 3) + ". "
                       + "Now: " + list);
+
     }
 }
