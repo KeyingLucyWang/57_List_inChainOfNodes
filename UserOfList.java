@@ -41,7 +41,7 @@ public class UserOfList {
 
   System.out.println( "modified element of index 0 from " + list.set( 0, "*") + " to t");
   System.out.println( "modified element of index 1 from " + list.set( 1, "t") + " to t");
-  System.out.println( "modified element of index 2 from " + list.set( 2, "a") + " to a"
+  System.out.println( "modified element of index 2 from " + list.set( 2, "e") + " to e"
                     + System.lineSeparator());
 
   System.out.println( "remove list element of index 0: " + list.remove( 0) + ". "

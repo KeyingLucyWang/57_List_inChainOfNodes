@@ -66,12 +66,11 @@ public class List_inChainOfNodes{
       }
 
 	  public Node getNode( int numOfNodesBefore){
-      int counter = 0;
-      for(Node test = headReference; test != null; test = test.getReferenceToNextNode()){
-        if (counter++ == numOfNodesBefore)
-					return test;
+      int counter;
+      Node test;
+      for(counter = 0, test = headReference; counter != numOfNodesBefore && test != null; test = test.getReferenceToNextNode(), counter++){
       }
-      return null;
+      return test;
     }
 
     public Object get( int numOfNodesBefore){
